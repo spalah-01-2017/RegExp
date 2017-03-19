@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>htmlStrip</title>
+</head>
+<body>
+
+<script>
+    function htmlStrip(html) {
+        var html = html || '';
+        var reg = /<\/?[a-z][a-z0-9]*([\s\w\d'"=]*)\/?>/gi;
+        return html.replace(reg, '');
+    }
+
+    console.log(htmlStrip('<div> hi </div>'));
+    console.log(htmlStrip('<div class="message">hello <br/> word</div>'));
+</script>
+
+</body>
+</html>
