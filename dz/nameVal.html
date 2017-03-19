@@ -1,0 +1,20 @@
+<div class='form-input'>
+	<input type='text' id='name'>
+	<span class='result'></span>
+</div>
+<script>
+(function(){
+	document.querySelector('#name').addEventListener('input', validate);
+
+	function validate(){
+		let name = document.querySelector('#name').value.trim();
+		let reg = /^[A-Z][a-z]+ [A-Z][a-z]+( [A-Z][a-z]+)?$/;
+		let res = document.querySelector('.result');
+		if(reg.test(name) === false)
+			res.innerHTML = 'invalid';
+		else
+			res.innerHTML = 'valid';
+	}
+})()
+
+</script>
