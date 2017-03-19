@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        input {
+            border: 2px solid #eee;
+            transition: all .3s linear;
+        }
+        
+        input:valid {
+            border: 2px solid green;
+        }
+        
+        input:invalid {
+            border: 2px solid red;
+        }
+    </style>
+    <div class="container">
+        <h1>Условия</h1>
+        <ol>
+            <li>Количество слов в имени: 2-3 (можно заменить это на условие 1-3 слова в имени)</li>
+            <li>Каждое слово начинается с большой буквы, за которой идут маленькие</li>
+            <li>Минимальная длина слова - 2 символа</li>
+            <li>В имени не должно быть никаких символов, кроме a-z</li>
+            <li>Между словами имени должен быть один пробельный символ</li>
+            <li>
+                <ol>
+                    <li>Наличие поля ввода (input)</li>
+                    <li>Срабатывание проверки на правильность ввода при каждом нажатии клавиши пользователем</li>
+                    <li>Отображение результата проверки рядом с полем ввода (valid/invalid), либо другое визуальное оповещение для пользователя, не используя стандартные браузерные функции (alert)</li>
+                </ol>
+            </li>
+        </ol>
+
+
+        <input pattern="^(\b[A-Z][a-z]+\b ){1,2}\b[A-Z][a-z]+\b$" placeholder="Enter your name" required>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
