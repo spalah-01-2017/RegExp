@@ -1,109 +1,128 @@
 console.log('%cТвоя реализация должна быть в этом файле \t ---->', 'font-size: 8px; font-weight: bold; color: blue');
 
 var regForNameAndCountry = /^[A-Z][a-z]+$/;
-var regForPhone = /^(\+|00)380[0-9]{8}$/
+var regForPhone = /^(\+|00)380\d{9}$/
 var regForEmail = /^([\d\w\.]+)@([a-z0-9\.]+)\.([a-z\.]+)$/
 var regForPassword = /((?=.*\d)(?=.*[a-z])){7,}/
 var regForPostCode = /\d{5}/
+
+var fullName = document.querySelector('#full-name'),
+		country = document.querySelector('#country'),
+		phone = document.querySelector('#phone'),
+		email = document.querySelector('#email'),
+		password = document.querySelector('#psw'),
+		returnPassword = document.querySelector('#psw-r'),
+		pasStrength = document.querySelector('.psw-strength'),
+		postCode = document.querySelector('#postcode'),
+		addText = document.querySelector('#add-text'),
+		charCounter = document.querySelector('#char-count')
+
+var inputs = document.querySelectorAll('input'),
+		button = document.querySelector('button')
+
+
+
 
 
 function valid(el) {
 	el.classList.remove('error');
 	el.classList.add('valid');
 }
+
 function invalid(el) {
 	el.classList.remove('valid');
 	el.classList.add('error');
 }
 //-------------VALID NAME-------------
 function validName () {
-	if (regForNameAndCountry.test(document.querySelector('#full-name').value)) {
-		valid(document.querySelector('#full-name'));
+	if (regForNameAndCountry.test(fullName.value)) {
+		valid(fullName);
 	} else {
-		invalid(document.querySelector('#full-name'));
+		invalid(fullName);
 	}
 }
-document.querySelector('#full-name').addEventListener('keyup', validName);
+fullName.addEventListener('keyup', validName);
 //-------------VALID COUNTRY-------------
 function validCountry () {
-	if (regForNameAndCountry.test(document.querySelector('#country').value)) {
-		valid(document.querySelector('#country'));
+	if (regForNameAndCountry.test(country.value)) {
+		valid(country);
 	} else {
-		invalid(document.querySelector('#country'));
+		invalid(country);
 	}
 }
-document.querySelector('#country').addEventListener('keyup', validCountry);
+country.addEventListener('keyup', validCountry);
 //-------------VALID PHONE-------------
 function validPhone () {
-	if (regForPhone.test(document.querySelector('#phone').value)) {
-		valid(document.querySelector('#phone'));
+	if (regForPhone.test(phone.value)) {
+		valid(phone);
 	} else {
-		invalid(document.querySelector('#phone'));
+		invalid(phone);
 	}
 }
-document.querySelector('#phone').addEventListener('keyup', validPhone);
+phone.addEventListener('keyup', validPhone);
 //-------------VALID EMAIL-------------
 function validEmail () {
-	if (regForEmail.test(document.querySelector('#email').value)) {
-		valid(document.querySelector('#email'));
+	if (regForEmail.test(email.value)) {
+		valid(email);
 	} else {
-		invalid(document.querySelector('#email'));
+		invalid(email);
 	}
 }
-document.querySelector('#email').addEventListener('keyup', validEmail);
+email.addEventListener('keyup', validEmail);
 //-------------VALID PASSWORD-------------
+pasStrength.style.display = 'block';
 function validPassword () {
-	if (regForPassword.test(document.querySelector('#psw').value)) {
-		valid(document.querySelector('#psw'));
+	if (regForPassword.test(password.value)) {
+		valid(password);
 	} else {
-		invalid(document.querySelector('#psw'));
+		invalid(password);
 	}
-	if((document.querySelector('#psw').value.length >= 1) && (document.querySelector('#psw').value.length <= 3)) {
-		document.querySelector('.psw-strength').setAttribute('style', 'display:block; width: 33%; background: red;');
-	} else if(/[4-6]/.test(document.querySelector('#psw').value.length)) {
-		document.querySelector('.psw-strength').setAttribute('style', 'display:block; width: 66%; background: orange;');
-	} else if(document.querySelector('#psw').value.length >= 7) {
-		document.querySelector('.psw-strength').setAttribute('style', 'display:block; width: 100%; background: green;');
+	if((password.value.length >= 1) && (password.value.length <= 3)) {
+		pasStrength.setAttribute('style', 'display:block; width: 33%; background: red;');
+	} else if(/[4-6]/.test(password.value.length)) {
+		pasStrength.setAttribute('style', 'display:block; width: 66%; background: orange;');
+	} else if(password.value.length >= 7) {
+		pasStrength.setAttribute('style', 'display:block; width: 100%; background: green;');
 	} else {
-		document.querySelector('.psw-strength').setAttribute('style', 'display:block; width: 0%;');
+		pasStrength.setAttribute('style', 'display:block; width: 0%;');
 	}
 }
-document.querySelector('#psw').addEventListener('keyup', validPassword);
+password.addEventListener('keyup', validPassword);
 //-------------VALID REPEAT PASSWORD-------------
 function validRepeatPassword () {
-	if ((document.querySelector('#psw').value) === (document.querySelector('#psw-r').value)) {
-		valid(document.querySelector('#psw-r'));
+	if (returnPassword.value === password.value) {
+		valid(returnPassword);
 	} else {
-		invalid(document.querySelector('#psw-r'));
+		invalid(returnPassword);
 	}
 }
-document.querySelector('#psw-r').addEventListener('keyup', validRepeatPassword);
+returnPassword.addEventListener('keyup', validRepeatPassword);
 //-------------VALID POSTCODE-------------
 function validPostCode () {
-	if ((regForPostCode.test(document.querySelector('#postcode').value)) && (document.querySelector('#postcode').value.length <= 5)) {
-		valid(document.querySelector('#postcode'));
+	if ((regForPostCode.test(postCode.value)) && (postCode.value.length <= 5)) {
+		valid(postCode);
 	} else {
-		invalid(document.querySelector('#postcode'));
+		invalid(postCode);
 	}
 }
-document.querySelector('#postcode').addEventListener('keyup', validPostCode);
+postCode.addEventListener('keyup', validPostCode);
 //-------------VALID ADD-TEXT-------------
 function validAddText () {
-	document.querySelector('#char-count').textContent = (parseInt(document.querySelector('#char-count').textContent)) + 1
+	charCounter.textContent = addText.value.length;
 }
-document.querySelector('#add-text').oninput = validAddText;
+addText.oninput = validAddText;
 
 //-------------VALID SUBMIT-------------
 function validSubmit (e) {
 	e.preventDefault();
 	var valid = true;
-	document.querySelectorAll('input').forEach((input) => {
+	inputs.forEach((input) => {
 		input.classList.contains('valid') ? valid = true : valid = false;
 	})
 	if (valid){
 		alert('Successfully registered');
 	} else {
-		document.querySelectorAll('input').forEach((input) => {
+		inputs.forEach((input) => {
 			if(input.classList = []) {
 				input.classList.add('error')
 			} 
@@ -111,4 +130,4 @@ function validSubmit (e) {
 		alert('Fill all required field and verify your infromation');
 	}
 }
-document.querySelector('button').addEventListener('click', validSubmit);
+button.addEventListener('click', validSubmit);
