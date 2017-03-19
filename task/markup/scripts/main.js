@@ -115,19 +115,19 @@ addText.oninput = validAddText;
 //-------------VALID SUBMIT-------------
 function validSubmit (e) {
 	e.preventDefault();
-	var valid = true;
+	var valid = [];
 	inputs.forEach((input) => {
-		input.classList.contains('valid') ? valid = true : valid = false;
+		input.classList.contains('valid') ? valid.push(true) : valid.push(false);
 	})
-	if (valid){
-		alert('Successfully registered');
-	} else {
+	if (valid.indexOf(false) + 1){
 		inputs.forEach((input) => {
 			if(input.classList = []) {
 				input.classList.add('error')
 			} 
 		})
 		alert('Fill all required field and verify your infromation');
+	} else {
+		alert('Successfully registered');
 	}
 }
 button.addEventListener('click', validSubmit);
