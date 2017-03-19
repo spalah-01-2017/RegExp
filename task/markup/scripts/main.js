@@ -1,7 +1,7 @@
 console.log('%cТвоя реализация должна быть в этом файле \t ---->', 'font-size: 8px; font-weight: bold; color: blue');
 
 var regForNameAndCountry = /^[A-Z][a-z]+$/;
-var regForPhone = /^(\+|00)380\d{8}$/
+var regForPhone = /^(\+|00)380[0-9]{8}$/
 var regForEmail = /^([\d\w\.]+)@([a-z0-9\.]+)\.([a-z\.]+)$/
 var regForPassword = /((?=.*\d)(?=.*[a-z])){7,}/
 var regForPostCode = /\d{5}/
