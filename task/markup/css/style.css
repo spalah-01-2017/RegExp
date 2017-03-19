@@ -20,19 +20,10 @@ body {
     border-radius: 5px;
 }
 
-.valid {
+.ink-form .control .valid {
     border: 1.5px solid #3f8514 !important;
 }
 
-.valid-icon:after {
-    content: "\f14a" !important;
-    color: #3f8514 !important;
-    margin-left: .6em;
-    font-family: FontAwesome;
-    font-size: .75em;
-    width: 1.25em;
-}
-
-.error {
+.ink-form .control .error {
     border: 1.5px solid #b10f0f !important;
 }
