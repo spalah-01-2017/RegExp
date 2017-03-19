@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>removeUrlAnchor</title>
+</head>
+<body>
+	<script>
+		function removeUrlAnchor1(string) {
+			var anchor = string.indexOf('#');
+			return string.substring(0, anchor) || string;
+		}
+		function removeUrlAnchor2(string) {
+			var anchor = /#\w+/;
+			return string.replace(anchor, '');
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>validName</title>
+</head>
+<body>
+	<input type="text">
+	<script>
+		var input = document.querySelector('input');
+		input.style.border = '2px solid transpaarent'
+		function validName() {
+			var reg = /^([A-Z][a-z]{1,} )(([A-Z][a-z]{1,})|([A-Z][a-z]{1,} [A-Z][a-z]{1,}))$/;
+			if (reg.test(input.value)) {
+				input.style.border = '2px solid green';
+			} else {
+				input.style.border = '2px solid red';
+			}
+		}
+		input.addEventListener('keyup', validName);
+	</script>
+</body>
+</html>

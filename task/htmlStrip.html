@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>htmlStrip</title>
+</head>
+<body>
+	<div>hi</div>
+	<div class="hello">hello</div>
+	<script>
+		function htmlStrip(html) {
+			var code = html;
+			return code.substring((code.indexOf('>')+1),code.lastIndexOf('<'));
+		}
+	</script>
+</body>
+</html>
