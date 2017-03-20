@@ -15,9 +15,10 @@
 
     function removeUrlAnchorTwo(url) {
         var url = url || '';
-        
-        var reg = /#[\w\d=]*/i;
-        return url.replace(reg, '');
+        if(url.indexOf('#') > -1){
+          url = url.slice(0, url.indexOf('#'));
+        }
+        return url;
     }
 
     console.log(removeUrlAnchor('www.codewars.com#about'));
