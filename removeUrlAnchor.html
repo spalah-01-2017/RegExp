@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>removeUrlAnchor</title>
+</head>
+<body>
+
+<script>
+    function removeUrlAnchor(url) {
+        var url = url || '';
+        var reg = /#[\w\d=]*/i;
+        return url.replace(reg, '');
+    }
+
+    function removeUrlAnchorTwo(url) {
+        var url = url || '';
+        
+        var reg = /#[\w\d=]*/i;
+        return url.replace(reg, '');
+    }
+
+    console.log(removeUrlAnchor('www.codewars.com#about'));
+    console.log(removeUrlAnchor('www.codewars.com?page=1'));
+
+    console.log(removeUrlAnchorTwo('www.codewars.com#about'));
+    console.log(removeUrlAnchorTwo('www.codewars.com?page=1'));
+
+</script>
+
+</body>
+</html>
