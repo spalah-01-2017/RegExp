@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Validate name</title>
+	<style>
+	  	body {
+			font-family: sans-serif;
+			color: #444;
+		    background: #F5F5D9;
+		}
+		.wrapper {
+			width: 600px;
+			margin: 0 auto;
+		}
+		.rules {
+			margin: 50px 0;
+		}
+		.valid, .invalid {
+			display: none;
+			margin-left: 20px;
+		}
+		.valid {
+			color: #70ACE9;
+		}
+		.invalid {
+			color: #F34F4F;
+		}
+		.active {
+			display: inline;
+		}
+		.test-names input {
+			height: 40px;
+			width: 300px;
+		    padding: 0 10px;
+		    font-size: 16px;
+		}
+		.test-names pre {
+			font-size: 16px;
+		}
+		.error > input {
+			outline: none;
+			box-shadow: 0 0 3px 3px #F34F4F;
+		}
+		.error > .valid {
+			display: none;
+		}
+		.error > .invalid {
+			display: inline;
+		}
+		.no-error > .valid {
+			display: inline;
+		}
+		.no-error > .invalid {
+			display: none;
+		}
+  	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>Normal Name Regex</h1>
+		<label class="test-names">
+			<input type="text" value="Duncan MacMillan">
+			<span class="valid">valid</span>
+			<span class="invalid">invalid</span>
+		</label>
+	</div>
+
+	<script>
+		var reg = /^(\b[A-Z][a-z]+\b ){1,2}(\b[A-Z][a-z]+\b){1}$/;
+		var input = document.querySelector('input');
+		var test = document.querySelector('.test-names');
+
+		function validate(e) {
+			if (reg.test(input.value)) {
+				test.classList.add('no-error');
+				test.classList.remove('error');
+			} else {
+				test.classList.add('error');
+				test.classList.remove('no-error');
+			}
+		}
+
+		input.addEventListener('keyup', validate);
+
+		
+
+	</script>
+</body>
+</html>
